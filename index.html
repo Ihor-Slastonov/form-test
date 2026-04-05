@@ -2,27 +2,122 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netlify Form Test</title>
+
+    <style>
+        :root {
+            --bg: #0f0f0f;
+            --card: #1c1c1c;
+            --accent: #e50914;
+            --text: #ffffff;
+            --muted: #b3b3b3;
+        }
+
+        body {
+            margin: 0;
+            font-family: sans-serif;
+            background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .form {
+            background: var(--card);
+            padding: 30px;
+            border-radius: 16px;
+            width: 320px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .form__title {
+            margin-bottom: 20px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        .form__label {
+            display: block;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--muted);
+        }
+
+        .form__input,
+        .form__textarea {
+            width: 100%;
+            margin-top: 6px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #333;
+            background: #111;
+            color: white;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        .form__input:focus,
+        .form__textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 2px rgba(229, 9, 20, 0.3);
+        }
+
+        .form__textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .form__button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .form__button:hover {
+            background: #ff1f2f;
+            transform: translateY(-1px);
+        }
+    </style>
 </head>
 
 <body>
-        <form>
-            <label class="form__label" for="username">
-                Name
-                <input class="from__input" type="text" name="username" id="username" />
-            </label>
-            <label class="form__label" for="telephone">
-                Phone number
-                <input class="from__input" type="tel" name="telephone" id="telephone" />
-            </label>
-            <label class="form__label" for="comment">
-                Name
-                <textarea></textarea>
-            </label>
 
-        </form>
+    <form class="form" name="contact" method="POST" data-netlify="true">
+        <!-- обязательный hidden input для Netlify -->
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="form__title">Contact me</div>
+
+        <label class="form__label" for="username">
+            Name
+            <input class="form__input" type="text" name="username" id="username" required />
+        </label>
+
+        <label class="form__label" for="telephone">
+            Phone number
+            <input class="form__input" type="tel" name="telephone" id="telephone" />
+        </label>
+
+        <label class="form__label" for="comment">
+            Comment
+            <textarea class="form__textarea" name="comment" id="comment"></textarea>
+        </label>
+
+        <button class="form__button" type="submit">
+            Send 🚀
+        </button>
+    </form>
+
 </body>
 
 </html>
