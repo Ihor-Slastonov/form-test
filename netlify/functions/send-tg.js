@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+
 
 exports.handler = async (event) => {
   // Разрешаем запросы только методом POST
